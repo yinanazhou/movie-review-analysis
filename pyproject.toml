@@ -10,6 +10,11 @@ python = "^3.11"
 notebook = "^7.0.0"
 pandas = "^2.0.3"
 selenium = "4.9.1"
+nltk = "^3.8.1"
+matplotlib = "^3.7.2"
+seaborn = "^0.12.2"
+transformers = "^4.31.0"
+torch = "^2.0.1"
 
 
 [build-system]

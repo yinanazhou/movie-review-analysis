@@ -65,14 +65,19 @@ def get_reviews(url, movie, year, driver_path, n_max=None, verbose=False):
     review_lst = driver.find_element(By.CLASS_NAME, 'lister-list')
 
     for review in review_lst.find_elements(By.XPATH, './*'):
-        review_title = review.find_element(By.CLASS_NAME, 'title').text
-        review_content = review.find_element(By.CLASS_NAME, 'text').text
-        
-        reviews.append({"Title": review_title,
-                        "Content": review_content,
+        title = review.find_element(By.CLASS_NAME, 'title').text
+        content = review.find_element(By.CLASS_NAME, 'text').text
+        rating = review.find_element(By.TAG_NAME, 'span').text
+        date = review.find_element(By.CLASS_NAME, 'review-date').text
+        action = review.find_element(By.CLASS_NAME, 'actions').text
+        reviews.append({"Title": title,
+                        "Content": content,
+                        "Rating": rating,
+                        "Date": date,
+                        "Action": action,
                         })
         if verbose:
-            print(f'#{len(reviews)}: {review_title}') 
+            print(f'#{len(reviews)}: {title}') 
         if len(reviews) == n_max:
             break
 
